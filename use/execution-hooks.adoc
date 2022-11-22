@@ -1,0 +1,151 @@
+---
+sidebar: sidebar 
+permalink: use/execution-hooks.html 
+keywords: execution hook, snapshot, hook, kubernetes, astra control, astra 
+summary: 'Un crochet d"exécution est un script personnalisé que vous pouvez exécuter avant ou après un instantané d"une application gérée.' 
+---
+= Gérer les crochets d'exécution de l'application
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Un crochet d'exécution est un script personnalisé que vous pouvez exécuter avant ou après un instantané d'une application gérée. Par exemple, si vous disposez d'une application de base de données, vous pouvez utiliser des crochets d'exécution pour interrompre toutes les transactions de base de données avant un instantané et reprendre les transactions une fois l'instantané terminé. Les snapshots sont ainsi cohérents au niveau des applications.
+
+
+
+== Crochets d'exécution par défaut et expressions régulières
+
+Pour certaines applications, Astra Control est doté de crochets d'exécution par défaut fournis par NetApp qui gèrent les opérations de gel et de dégel avant et après les snapshots. Astra Control utilise des expressions régulières pour faire correspondre l'image de conteneur d'une application à ces applications :
+
+* MariaDB
++
+** Expression régulière correspondante : \bmariadb\b
+
+
+* MySQL
++
+** Expression régulière correspondante : \bmysql\b
+
+
+* PostgreSQL
++
+** Expression régulière correspondante : \bpostgresql\b
+
+
+
+
+S'il y a une correspondance, les crochets d'exécution par défaut fournis par NetApp pour cette application apparaissent dans la liste des crochets d'exécution actifs de l'application, et ces crochets s'exécutent automatiquement lorsque des instantanés de cette application sont effectués. Si l'une de vos applications personnalisées possède un nom d'image similaire qui correspond à l'une des expressions régulières (et que vous ne souhaitez pas utiliser les crochets d'exécution par défaut), vous pouvez modifier le nom de l'image, ou désactivez le crochet d'exécution par défaut pour cette application et utilisez plutôt un crochet personnalisé.
+
+Vous ne pouvez pas supprimer ou modifier les crochets d'exécution par défaut.
+
+
+
+== Remarques importantes sur les crochets d'exécution personnalisés
+
+Lors de la planification de crochets d'exécution pour vos applications, tenez compte des points suivants.
+
+* Astra Control nécessite que les crochets d'exécution soient écrits au format de scripts shell exécutables.
+* La taille du script est limitée à 128 Ko.
+* Astra Control utilise les paramètres de crochet d'exécution et tout critère de correspondance pour déterminer quels crochets s'appliquent à un instantané.
+* Toutes les défaillances de crochet d'exécution sont des défaillances logicielles ; d'autres crochets et l'instantané sont toujours tentées même en cas de défaillance d'un crochet. Cependant, lorsqu'un crochet échoue, un événement d'avertissement est enregistré dans le journal des événements de la page *activité*.
+* Pour créer, modifier ou supprimer des crochets d'exécution, vous devez être un utilisateur disposant des autorisations propriétaire, administrateur ou membre.
+* Si l'exécution d'un crochet d'exécution prend plus de 25 minutes, le crochet échoue, créant une entrée de journal d'événements avec un code retour « N/A ». Tout instantané affecté expire et sera marqué comme ayant échoué, avec une entrée du journal des événements qui en résulte indiquant le délai d'attente.
+
+
+
+NOTE: Puisque les crochets d'exécution réduisent souvent ou désactivent complètement la fonctionnalité de l'application contre laquelle ils sont en cours d'exécution, vous devez toujours essayer de réduire le temps d'exécution de vos crochets d'exécution personnalisés.
+
+Lors de l'exécution d'un instantané, les événements de hook d'exécution ont lieu dans l'ordre suivant :
+
+. Tous les crochets d'exécution par défaut fournis par NetApp s'exécutent sur les conteneurs appropriés.
+. Tous les crochets d'exécution pré-snapshot personnalisés applicables sont exécutés sur les conteneurs appropriés. Vous pouvez créer et exécuter autant de crochets pré-snapshot personnalisés que vous le souhaitez, mais l'ordre d'exécution de ces crochets avant que le snapshot ne soit ni garanti ni configurable.
+. Le snapshot est effectué.
+. Tous les crochets d'exécution post-snapshot personnalisés applicables sont exécutés sur les conteneurs appropriés. Vous pouvez créer et exécuter autant de crochets post-snapshot personnalisés que vous le souhaitez, mais l'ordre d'exécution de ces crochets après le snapshot n'est ni garanti ni configurable.
+. Tous les crochets d'exécution post-snapshot par défaut fournis par NetApp s'exécutent sur les conteneurs appropriés.
+
+
+
+NOTE: Vous devez toujours tester vos scripts d'exécution avant de les activer dans un environnement de production. Vous pouvez utiliser la commande 'kubectl exec' pour tester aisément les scripts. Une fois que vous avez activé les crochets d'exécution dans un environnement de production, testez les snapshots obtenus pour vous assurer qu'ils sont cohérents. Pour ce faire, vous pouvez cloner l'application dans un espace de noms temporaire, restaurer le snapshot, puis tester l'application.
+
+
+
+== Afficher les crochets d'exécution existants
+
+Vous pouvez afficher les crochets d'exécution d'une application personnalisés ou par défaut fournis par NetApp.
+
+.Étapes
+. Accédez à *applications*, puis sélectionnez le nom d'une application gérée.
+. Sélectionnez l'onglet *crochets d'exécution*.
++
+Vous pouvez afficher tous les crochets d'exécution activés ou désactivés dans la liste résultante. Vous pouvez voir l'état d'un crochet, sa source et le moment où il est exécuté (pré ou post-instantané). Pour afficher les journaux d'événements entourant les crochets d'exécution, accédez à la page *activité* dans la zone de navigation de gauche.
+
+
+
+
+
+== Créer un crochet d'exécution personnalisé
+
+Vous pouvez créer un crochet d'exécution personnalisé pour une application. Voir link:execution-hook-examples.html["Exemples de crochet d'exécution"^] pour des exemples de crochet. Vous devez disposer d'autorisations propriétaire, administrateur ou membre pour créer des crochets d'exécution.
+
+
+NOTE: Lorsque vous créez un script de shell personnalisé à utiliser comme crochet d'exécution, n'oubliez pas de spécifier le shell approprié au début du fichier, sauf si vous exécutez des commandes linux ou fournissez le chemin complet à un exécutable.
+
+.Étapes
+. Sélectionnez *applications*, puis le nom d'une application gérée.
+. Sélectionnez l'onglet *crochets d'exécution*.
+. Sélectionnez *Ajouter un nouveau crochet*.
+. Dans la zone *Détails du crochet*, selon le moment où le crochet doit être exécuté, choisissez *Préinstantané* ou *Post-instantané*.
+. Saisissez un nom unique pour le crochet.
+. (Facultatif) saisissez les arguments à transmettre au crochet pendant l'exécution, en appuyant sur la touche entrée après chaque argument que vous entrez pour enregistrer chacun.
+. Dans la zone *Images conteneur*, si le crochet doit être exécuté sur toutes les images de conteneur contenues dans l'application, activez la case à cocher *appliquer à toutes les images de conteneur*. Si, à la place, le crochet ne doit agir que sur une ou plusieurs images de conteneur spécifiées, entrez les noms d'image de conteneur dans le champ *noms d'image de conteneur à associer*.
+. Dans la zone *script*, effectuez l'une des opérations suivantes :
++
+** Charger un script personnalisé.
++
+... Sélectionnez l'option *Télécharger le fichier*.
+... Accédez à un fichier et téléchargez-le.
+... Donnez un nom unique au script.
+... (Facultatif) Entrez toutes les notes que les autres administrateurs doivent connaître au sujet du script.
+
+
+** Coller dans un script personnalisé à partir du presse-papiers.
++
+... Sélectionnez l'option *Coller dans le presse-papiers*.
+... Sélectionnez le champ de texte et collez le texte du script dans le champ.
+... Donnez un nom unique au script.
+... (Facultatif) Entrez toutes les notes que les autres administrateurs doivent connaître au sujet du script.
+
+
+
+
+. Sélectionnez *Ajouter crochet*.
+
+
+
+
+== Désactivez un crochet d'exécution
+
+Vous pouvez désactiver un crochet d'exécution si vous souhaitez l'empêcher temporairement de s'exécuter avant ou après un instantané d'une application. Vous devez disposer d'autorisations propriétaire, administrateur ou membre pour désactiver les crochets d'exécution.
+
+.Étapes
+. Sélectionnez *applications*, puis le nom d'une application gérée.
+. Sélectionnez l'onglet *crochets d'exécution*.
+. Sélectionnez le menu Options dans la colonne *actions* pour un crochet que vous souhaitez désactiver.
+. Sélectionnez *Désactiver*.
+
+
+
+
+== Supprimer un crochet d'exécution
+
+Vous pouvez supprimer entièrement un crochet d'exécution si vous n'en avez plus besoin. Vous devez disposer d'autorisations propriétaire, administrateur ou membre pour supprimer les crochets d'exécution.
+
+.Étapes
+. Sélectionnez *applications*, puis le nom d'une application gérée.
+. Sélectionnez l'onglet *crochets d'exécution*.
+. Sélectionnez le menu Options dans la colonne *actions* pour un crochet que vous souhaitez supprimer.
+. Sélectionnez *Supprimer*.
+

@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: concepts/licensing.html 
+keywords: license, licensing 
+summary: 'Découvrez comment les actions que vous pouvez exécuter avec Astra Control Center diffèrent en fonction de l"état de la licence et comment votre utilisation d"Astra Control Center affecte la consommation de la licence.' 
+---
+= Licences
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/concepts/
+
+
+[role="lead"]
+Astra Control Center requiert l'installation d'une licence qui permet la mise en œuvre de la fonctionnalité complète de gestion des données d'application. Lorsque vous déployez Astra Control Center sans licence, une bannière s'affiche dans l'interface utilisateur Web, vous avertissant que la fonctionnalité du système est limitée.
+
+Les opérations suivantes nécessitent une licence valide :
+
+* Gestion de nouvelles applications
+* Création de snapshots ou de sauvegardes
+* Configuration d'une règle de protection pour planifier des snapshots ou des sauvegardes
+* Restauration à partir d'un snapshot ou d'une sauvegarde
+* Clonage à partir d'un snapshot ou état actuel
+
+
+
+NOTE: Vous pouvez ajouter un cluster, ajouter un compartiment et gérer un système back-end de stockage du magasin de données Astra sans licence. Il est cependant nécessaire d'obtenir une licence Astra Control Center valide pour gérer les applications qui utilisent l'Astra Data Store en tant que système de stockage back-end.
+
+
+
+== Mode de calcul de la consommation des licences
+
+Lorsque vous ajoutez un nouveau cluster à Astra Control Center, il ne prend pas en compte les licences consommées tant qu'au moins une application exécutée sur le cluster est gérée par Astra Control Center. Vous pouvez également ajouter un système back-end de stockage en magasin de données Astra à Control Center sans affecter la consommation des licences. Vous pouvez ainsi gérer un back-end Astra Data Store à partir d'un système sans licence Astra Control Center.
+
+Lorsque vous commencez à gérer une application sur un cluster, les UC du cluster sont incluses dans le calcul de la consommation de licence Astra Control Center.
+
+
+
+== Trouvez plus d'informations
+
+* link:../use/update-licenses.html["Mettre à jour une licence existante"]
+

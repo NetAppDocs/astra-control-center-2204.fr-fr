@@ -1,0 +1,12 @@
+---
+section: solutions
+title: Déploiement des applications
+entries:
+- title: Déployez Jenkins
+  url: "/solutions/jenkins-deploy-from-helm-chart.html"
+- title: Déployer MariaDB
+  url: "/solutions/mariadb-deploy-from-helm-chart.html"
+- title: Déployez MySQL
+  url: "/solutions/mysql-deploy-from-helm-chart.html"
+- title: Déploiement de Postgres
+  url: "/solutions/postgres-deploy-from-helm-chart.html"

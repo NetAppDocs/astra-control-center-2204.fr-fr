@@ -1,0 +1,76 @@
+= De formation
+:allow-uri-read: 
+
+
+Découvrez comment déployer Jenkins à partir du https://bitnami.com/stack/jenkins/helm["Graphique Helm Bitnami"^]. Après avoir déployé Jenkins sur votre cluster, vous pouvez enregistrer l'application avec Astra Control.
+
+Jenkins est une application validée pour Astra Control.
+
+* https://docs.netapp.com/us-en/astra/learn/validated-vs-standard.html["Découvrez la différence entre une application validée et une application standard dans Astra Control Service"^].
+* https://docs.netapp.com/us-en/astra-control-center/concepts/validated-vs-standard.html["Découvrez la différence entre une application validée et une application standard dans Astra Control Center"^].
+
+
+Ces instructions s'appliquent à l'Astra Control Service et au Control Center Astra.
+
+
+NOTE: Les applications déployées à partir de Google Marketplace n'ont pas été validées. Certains utilisateurs signalent des problèmes de découverte et/ou de sauvegarde avec les déploiements Google Marketplace de Postgres, MariaDB et MySQL.
+
+
+
+== De formation
+
+* Un groupe d'instruments qui a été ajouté à Astra Control.
++
+
+NOTE: Pour Astra Control Center, vous pouvez d'abord ajouter le groupe d'instruments au centre de contrôle Astra ou ajouter l'application en premier.
+
+* Versions mises à jour de Helm (version 3.2+) et Kubectl installées sur une machine locale avec le kubeconfig approprié pour le cluster
+
+
+Astra Control ne prend pas en charge actuellement le https://plugins.jenkins.io/kubernetes/["Plug-in Kubernetes pour Jenkins"^]. Vous pouvez exécuter Jenkins dans un cluster Kubernetes sans le plug-in. Le plug-in offre l'évolutivité à votre cluster Jenkins.
+
+
+
+== Installez Jenkins
+
+Deux remarques importantes sur ce processus :
+
+* Vous devez déployer votre application après l'ajout du cluster au service Astra Control, et non plus auparavant. Le centre de contrôle Astra accepte les applications avant ou après l'ajout du bloc d'instruments au centre de contrôle Astra.
+* Vous devez déployer le graphique Helm dans un namespace autre que celui par défaut.
+
+
+.Étapes
+. Ajoutez le repo du diagramme Bitnami :
++
+[listing]
+----
+helm repo add bitnami https://charts.bitnami.com/bitnami
+----
+. Créer le `jenkins` Espace de noms et déploiement de Jenkins dans l'environnement IT par la commande :
++
+[listing]
+----
+helm install <name> bitnami/jenkins –-namespace <namespace> --create-namespace
+–-set global.storageClass=<storage_class_name>
+----
++
+
+NOTE: Si la taille du volume est modifiée, utilisez des unités de kibyte (Ki), de Mebibyte (mi) ou de Gibibyte (Gi).
+
++
+Vous devez définir la classe de stockage uniquement dans les cas suivants :
+
++
+** Vous utilisez Astra Control Service et vous ne souhaitez pas utiliser la classe de stockage par défaut.
+** Vous utilisez Astra Control Center et vous n'avez pas encore importé le cluster dans Astra Control Center. Vous avez également importé le cluster, mais ne souhaitez pas utiliser la classe de stockage par défaut.
+
+
+
+
+Il s'agit des éléments suivants :
+
+* Crée un espace de noms.
+* Définit la classe de stockage appropriée.
+
+
+Une fois les pods en ligne, vous pouvez gérer l'application avec Astra Control. Astra Control vous permet de gérer une application au niveau de l'espace de noms ou en utilisant une étiquette Helm.

@@ -1,0 +1,35 @@
+= Applications validées
+:allow-uri-read: 
+
+
+Il existe deux types d'applications que vous pouvez apporter à Astra Control : validée et standard. Découvrez la différence entre ces deux catégories et les impacts potentiels sur vos projets et votre stratégie.
+
+
+NOTE: Il est tentant de penser que ces deux catégories sont « prises en charge » et « non prises en charge ». Mais comme vous le verrez, il n'y a pas d'application « non prise en charge » dans Astra Control. Vous pouvez ajouter n'importe quelle application à Astra Control, même si les applications validées disposent d'un plus grand nombre d'infrastructure développée autour des workflows Astra Control par rapport aux applications standard.
+
+
+
+== Applications validées
+
+Voici quelques applications validées pour Astra Control :
+
+* MySQL 8.0.25
+* MariaDB 10.5.9
+* PostgreSQL 11.12
+* Jenkins 2.277.4 LTS et 2.289.1 LTS
+
+
+La liste des applications validées représente des applications reconnues par Astra Control. L'équipe Astra Control a analysé et confirmé que ces applications doivent être entièrement testées pour la restauration. Astra Control exécute des workflows personnalisés afin d'assurer la cohérence des snapshots et des sauvegardes au niveau des applications.
+
+Si une application est validée, l'équipe Astra Control a identifié et mis en œuvre des étapes qui peuvent être mises en attente de l'application avant de prendre un instantané afin d'obtenir un instantané cohérent avec l'application. Par exemple, lorsqu'Astra Control sauvegarde une base de données PostgreSQL, il arrête d'abord la base de données. Une fois la sauvegarde terminée, Astra Control restaure le fonctionnement normal de la base de données.
+
+Quel que soit le type d'application que vous utilisez avec Astra Control, testez toujours le flux de travail de sauvegarde et de restauration vous-même pour vous assurer qu'il est possible de respecter vos exigences de reprise d'activité.
+
+
+
+== D'applications standard
+
+D'autres applications, y compris des programmes personnalisés, sont considérées comme des applications standard. Vous pouvez ajouter et gérer des applications standard avec Astra Control. Vous pouvez également créer des snapshots et des sauvegardes basiques et cohérentes avec les défaillances d'une application standard. Toutefois, ces tests n'ont pas été entièrement testés pour restaurer l'état d'origine de l'application.
+
+
+TIP: Astra Control en soi n'est pas une application standard. Il s'agit d'une « application système ». Le contrôle Astra lui-même n'est pas indiqué par défaut pour la direction. Vous ne devriez pas essayer de gérer Astra Control lui-même.

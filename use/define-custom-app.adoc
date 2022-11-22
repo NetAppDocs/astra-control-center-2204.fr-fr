@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: use/define-custom-app.html 
+keywords: manage app, custom app, kubernetes, astra control, astra 
+summary: 'La création d"une application personnalisée vous permet de regrouper des éléments de votre cluster Kubernetes dans une seule application.' 
+---
+= Définir un exemple d'application personnalisée
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+La création d'une application personnalisée vous permet de regrouper des éléments de votre cluster Kubernetes dans une seule application. Cette collection de ressources Kubernetes est basée sur un namespace et une étiquette.
+
+Une application personnalisée vous offre un contrôle plus granulaire sur les éléments à inclure dans une opération Astra Control, notamment :
+
+* Clonage
+* Snapshot
+* Sauvegarde
+* Règle de protection
+
+
+Dans la plupart des cas, vous voudrez utiliser les fonctions d'Astra Control sur l'ensemble de votre application. Toutefois, vous pouvez également créer une application personnalisée pour utiliser ces fonctionnalités par les étiquettes que vous attribuez aux objets Kubernetes dans un espace de noms.
+
+
+NOTE: Les applications personnalisées ne peuvent être créées qu'au sein d'un espace de nom spécifié sur un même cluster. Astra Control ne prend pas en charge la capacité d'une application personnalisée à s'étendre sur plusieurs espaces de noms ou clusters.
+
+Une étiquette est une paire clé/valeur que vous pouvez attribuer aux objets Kubernetes pour identification. Elles facilitent le tri, l'organisation et la recherche des objets Kubernetes. Pour en savoir plus sur les étiquettes Kubernetes, https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/["Consultez la documentation officielle Kubernetes"^].
+
+
+WARNING: Le chevauchement de stratégies pour la même ressource sous des noms différents peut entraîner des conflits de données. Si vous créez une application personnalisée pour une ressource, assurez-vous qu'elle n'est pas en cours de clonage ou de sauvegarde dans le cadre d'autres stratégies.
+
+.Ce dont vous avez besoin, 8217;ll
+* Un groupe d'instruments est ajouté à Astra Control
+
+
+.Étapes
+. Sur la page applications, sélectionnez **+ définir**.
++
+La fenêtre Custom App indique quelles ressources seront incluses ou exclues de votre application personnalisée. Cela vous permet de vous assurer que vous choisissez les critères appropriés pour définir votre application personnalisée.
+
+. Dans la fenêtre contextuelle, entrez le nom de l'application, choisissez le cluster dans la liste déroulante **Cluster** et choisissez l'espace de noms de l'application dans la liste déroulante **namespace**.
+. Dans la liste déroulante *Label*, sélectionnez un libellé pour les applications et l'espace de noms.
+. Après avoir défini l'application personnalisée pour un déploiement, répétez le processus pour les autres déploiements, selon les besoins.
+
+
+Lorsque vous avez terminé de créer les deux applications personnalisées, vous pouvez traiter ces ressources comme n'importe quelle autre application Astra Control. Ils peuvent les cloner, créer des sauvegardes et des snapshots et créer une règle de protection personnalisée pour chaque groupe de ressources en fonction des étiquettes Kubernetes.
+
+
+
+== Exemple : politique de protection distincte pour différentes versions
+
+Dans cet exemple, l'équipe devops gère un déploiement canary Release. Leur cluster a trois modules exécutant Nginx. Deux des modules sont dédiés à la version stable. Le troisième pod est pour la libération des canaris.
+
+L'administrateur Kubernetes de l'équipe devops ajoute ce label `deployment=stable` aux boîtiers de déverrouillage stables. L'équipe ajoute l'étiquette `deployment=canary` à la canary release pod.
+
+La version stable de l'équipe inclut des snapshots horaires et des sauvegardes quotidiennes. La libération des canaris est plus éphémère, ils veulent donc créer une politique de protection moins agressive à court terme pour tout ce qui est étiqueté `deployment=canary`.
+
+Afin d'éviter d'éventuels conflits de données, l'administrateur va créer deux apps personnalisées: Une pour la libération "canary", et une pour la version "stable". Les sauvegardes, snapshots et opérations de clonage sont donc séparés pour les deux groupes d'objets Kubernetes.
