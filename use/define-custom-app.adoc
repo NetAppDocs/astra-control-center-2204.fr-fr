@@ -32,7 +32,7 @@ Une étiquette est une paire clé/valeur que vous pouvez attribuer aux objets Ku
 
 WARNING: Le chevauchement de stratégies pour la même ressource sous des noms différents peut entraîner des conflits de données. Si vous créez une application personnalisée pour une ressource, assurez-vous qu'elle n'est pas en cours de clonage ou de sauvegarde dans le cadre d'autres stratégies.
 
-.Ce dont vous avez besoin, 8217;ll
+.Ce dont vous avez besoin
 * Un groupe d'instruments est ajouté à Astra Control
 
 

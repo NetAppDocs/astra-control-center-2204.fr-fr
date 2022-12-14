@@ -21,28 +21,28 @@ Vous pouvez utiliser l'exemple de flux de travail suivant pour commencer à prot
 
 
 
-=== Sauvegardez toutes les applications
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"] Sauvegardez toutes les applications
 
 [role="quick-margin-para"]
 Pour être sûr que vos applications sont immédiatement protégées, link:protect-apps.html#create-a-backup["créez une sauvegarde manuelle de toutes les applications"].
 
 
 
-=== Configurez une stratégie de protection pour chaque application
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"] Configurez une stratégie de protection pour chaque application
 
 [role="quick-margin-para"]
 Pour automatiser les sauvegardes et snapshots futurs, link:protect-apps.html#configure-a-protection-policy["configurez une stratégie de protection pour chaque application"]. Par exemple, vous pouvez commencer avec des sauvegardes hebdomadaires et des snapshots quotidiens, et en conserver un mois pour les deux. Il est fortement recommandé d'automatiser les sauvegardes et les snapshots avec une règle de protection par rapport aux sauvegardes et snapshots manuels.
 
 
 
-=== Facultatif : ajustez les règles de protection
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"] Facultatif : ajustez les règles de protection
 
 [role="quick-margin-para"]
 À mesure que les applications et leurs modèles d'utilisation évoluent, ajustez les règles de protection selon les besoins pour bénéficier d'une protection optimale.
 
 
 
-=== En cas d'incident, restaurez vos applications
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"] En cas d'incident, restaurez vos applications
 
 [role="quick-margin-para"]
 En cas de perte de données, vous pouvez effectuer une restauration par link:restore-apps.html["restauration de la dernière sauvegarde"] d'abord pour chaque application. Vous pouvez alors restaurer le dernier snapshot (si disponible).

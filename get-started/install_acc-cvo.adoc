@@ -17,8 +17,8 @@ Dans l'un de ces déploiements, vous pouvez effectuer des opérations de gestion
 
 Pour installer Astra Control Center dans Amazon Web Services (AWS) et Microsoft Azure avec le système back-end de stockage Cloud Volumes ONTAP, effectuez les étapes suivantes en fonction de votre environnement cloud.
 
-*  Astra Control Center in Amazon Web Services
-*  Astra Control Center in Microsoft Azure
+* <<Déploiement d'Astra Control Center dans Amazon Web Services>>
+* <<Déploiement d'Astra Control Center dans Microsoft Azure>>
 
 
 
@@ -31,7 +31,7 @@ Seuls les clusters OpenShift Container Platform (OCP) autogérés sont pris en c
 
 
 
-=== Ce dont vous aurez besoin pour AWS
+=== Ce dont vous avez besoin pour AWS
 
 Avant de déployer Astra Control Center dans AWS, vous aurez besoin des éléments suivants :
 
@@ -120,11 +120,11 @@ Voici un aperçu du processus d'installation d'Astra Control Center pour AWS ave
 
 Chacune de ces étapes est expliquée en détail ci-dessous.
 
-.  that you have sufficient IAM permissions.
-.  a RedHat OpenShift cluster on AWS.
-.  AWS.
-.  NetApp Cloud Manager.
-.  Astra Control Center.
+. <<Assurez-vous que vous disposez de suffisamment d'autorisations IAM>>.
+. <<Installez un cluster Red Hat OpenShift sur AWS>>.
+. <<Configurez AWS>>.
+. <<Configurez NetApp Cloud Manager>>.
+. <<Poser le centre de contrôle Astra>>.
 
 
 
@@ -222,7 +222,7 @@ Vous pouvez déployer Astra Control Center sur un cluster Kubernetes autogéré,
 
 
 
-=== Ce dont vous aurez besoin pour Azure
+=== Ce dont vous avez besoin pour Azure
 
 Avant de déployer Astra Control Center dans Azure, vous aurez besoin des éléments suivants :
 
@@ -303,12 +303,12 @@ Voici un aperçu du processus d'installation d'Astra Control Center pour Azure.
 
 Chacune de ces étapes est expliquée en détail ci-dessous.
 
-.  a RedHat OpenShift cluster on Azure.
-.  Azure resource groups.
-.  that you have sufficient IAM permissions.
-.  Azure.
-.  NetApp Cloud Manager.
-.  and configure Astra Control Center.
+. <<Installez un cluster Red Hat OpenShift sur Azure>>.
+. <<Créez des groupes de ressources Azure>>.
+. <<Assurez-vous que vous disposez de suffisamment d'autorisations IAM>>.
+. <<Configurez Azure>>.
+. <<Configurez NetApp Cloud Manager>>.
+. <<Installer et configurer le centre de contrôle Astra>>.
 
 
 
@@ -395,6 +395,7 @@ Avec Cloud Manager, créez un espace de travail, ajoutez un connecteur à Azure,
 
 Suivez la documentation de Cloud Manager pour effectuer les étapes suivantes. Voir https://docs.netapp.com/us-en/occm/task_getting_started_azure.html["Mise en route de Cloud Manager dans Azure"^].
 
+.Ce dont vous avez besoin
 Accès au compte Azure avec les autorisations IAM et les rôles requis
 
 .Étapes

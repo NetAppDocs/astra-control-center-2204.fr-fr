@@ -74,6 +74,7 @@ Vous devez définir la classe de stockage uniquement dans les cas suivants :
 
 
 
+.Résultat
 Il s'agit des éléments suivants :
 
 * Crée un espace de noms.

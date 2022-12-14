@@ -69,12 +69,12 @@ Vous pouvez effectuer les opérations suivantes pour gérer les applications :
 
 * Gérer des applications
 +
-**  apps by namespace
-**  apps by Kubernetes label
+** <<Gérer les applications par espace de noms>>
+** <<Gérer les applications par étiquette Kubernetes>>
 
 
-*  apps
-*  apps
+* <<Ignorer les applications>>
+* <<Annuler la gestion des applications>>
 
 
 
@@ -123,6 +123,7 @@ NOTE: Il se peut que l'application que vous venez d'ajouter comporte une icône 
 . Pour afficher les détails d'une application particulière, sélectionnez le nom de l'application.
 
 
+.Résultat
 Les applications que vous avez choisi de gérer sont désormais disponibles dans l'onglet *Managed*. Toutes les applications ignorées seront transférées vers l'onglet *ignoré*. Idéalement, l'onglet découvert affiche zéro application, de sorte qu'à mesure que de nouvelles applications sont installées, elles sont plus faciles à trouver et à gérer.
 
 
@@ -155,6 +156,7 @@ Une fois que vous avez choisi un libellé, celui-ci s'affiche dans le champ *Lab
 . Sélectionnez *définir l'application personnalisée*.
 
 
+.Résultat
 Astra Control permet de gérer l'application. Vous pouvez maintenant le trouver dans l'onglet *Managed*.
 
 
