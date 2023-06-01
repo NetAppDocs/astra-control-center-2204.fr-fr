@@ -11,7 +11,7 @@ summary: 'Protégez vos applications en effectuant des copies Snapshot et des sa
 :imagesdir: ../media/use/
 
 
-Protégez vos applications en effectuant des copies Snapshot et des sauvegardes à l'aide d'une stratégie de protection automatisée ou ad hoc. Vous pouvez utiliser l'interface utilisateur Astra ou https://docs.netapp.com/us-en/astra-automation/index.html["API de contrôle Astra"^] pour protéger les applications.
+Protégez vos applications en effectuant des copies Snapshot et des sauvegardes à l'aide d'une stratégie de protection automatisée ou ad hoc. Vous pouvez utiliser l'interface utilisateur Astra ou https://docs.netapp.com/us-en/astra-automation-2204/index.html["API de contrôle Astra"^] pour protéger les applications.
 
 
 NOTE: Si vous utilisez Helm pour déployer des applications, Astra Control Center requiert Helm version 3. La gestion et le clonage des applications déployées avec Helm 3 (ou mises à niveau de Helm 2 à Helm 3) sont entièrement pris en charge. Les applications déployées avec Helm 2 ne sont pas prises en charge.
@@ -94,7 +94,7 @@ Astra Control Center crée une sauvegarde de l'application.
 NOTE: Si votre réseau est en panne ou anormalement lent, une opération de sauvegarde risque d'être terminée. Ceci entraîne l'échec de la sauvegarde.
 
 
-NOTE: Il est impossible d'arrêter une sauvegarde en cours d'exécution. Si vous devez supprimer la sauvegarde, attendez qu'elle soit terminée, puis suivez les instructions de la section <<Supprimer les sauvegardes>>. Pour supprimer une sauvegarde défaillante, https://docs.netapp.com/us-en/astra-automation/index.html["Utilisez l'API de contrôle Astra"^].
+NOTE: Il est impossible d'arrêter une sauvegarde en cours d'exécution. Si vous devez supprimer la sauvegarde, attendez qu'elle soit terminée, puis suivez les instructions de la section <<Supprimer les sauvegardes>>. Pour supprimer une sauvegarde défaillante, https://docs.netapp.com/us-en/astra-automation-2204/index.html["Utilisez l'API de contrôle Astra"^].
 
 
 NOTE: Après une opération de protection des données (clonage, sauvegarde, restauration) et après le redimensionnement du volume persistant, il y a vingt minutes de retard avant que la nouvelle taille du volume ne s'affiche dans l'interface utilisateur. La protection des données fonctionne avec succès en quelques minutes et vous pouvez utiliser le logiciel de gestion pour le système back-end pour confirmer la modification de la taille du volume.
@@ -137,7 +137,7 @@ Astra Control Center supprime le snapshot.
 Supprimez les sauvegardes planifiées ou à la demande qui ne vous sont plus nécessaires.
 
 
-NOTE: Il est impossible d'arrêter une sauvegarde en cours d'exécution. Si vous devez supprimer la sauvegarde, attendez qu'elle soit terminée, puis suivez ces instructions. Pour supprimer une sauvegarde défaillante, https://docs.netapp.com/us-en/astra-automation/index.html["Utilisez l'API de contrôle Astra"^].
+NOTE: Il est impossible d'arrêter une sauvegarde en cours d'exécution. Si vous devez supprimer la sauvegarde, attendez qu'elle soit terminée, puis suivez ces instructions. Pour supprimer une sauvegarde défaillante, https://docs.netapp.com/us-en/astra-automation-2204/index.html["Utilisez l'API de contrôle Astra"^].
 
 . Sélectionnez *applications*, puis le nom d'une application.
 . Sélectionnez *protection des données*.

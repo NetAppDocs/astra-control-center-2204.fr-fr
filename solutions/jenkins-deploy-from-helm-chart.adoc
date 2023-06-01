@@ -15,8 +15,7 @@ Découvrez comment déployer Jenkins à partir du https://bitnami.com/stack/jenk
 
 Jenkins est une application validée pour Astra Control.
 
-* https://docs.netapp.com/us-en/astra/learn/validated-vs-standard.html["Découvrez la différence entre une application validée et une application standard dans Astra Control Service"^].
-* https://docs.netapp.com/us-en/astra-control-center/concepts/validated-vs-standard.html["Découvrez la différence entre une application validée et une application standard dans Astra Control Center"^].
+* https://docs.netapp.com/us-en/astra-control-center-2204/concepts/validated-vs-standard.html#validated-apps["Découvrez la différence entre une application validée et une application standard dans Astra Control"^].
 
 
 Ces instructions s'appliquent à l'Astra Control Service et au Control Center Astra.
