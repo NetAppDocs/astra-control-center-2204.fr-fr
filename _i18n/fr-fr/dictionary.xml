@@ -778,11 +778,8 @@
   <block id="ac5af645cec8d25669a5a9893f571bcc" category="paragraph">Voir<block ref="47e48c38bbba09ad0234959e4f70e6b5" category="inline-link-rx"></block>.</block>
   <block id="ffe7dbf60b2fbe9ee35b02eca9bedb83" category="section-title">Configurez Azure</block>
   <block id="daee2a4caddb0f1fced149c9b185ab3e" category="paragraph">Configurez ensuite Azure pour créer un réseau virtuel, configurez des instances de calcul, créez un conteneur Azure Blob Container Register, créez un ACR (Azure Container Register) pour héberger les images d'Astra Control Center et envoyez les images dans ce registre.</block>
-  <block id="310c2720a5523c6a1f55532ee951393c" category="paragraph">Suivez la documentation Azure pour suivre les étapes ci-dessous. Voir<block ref="604df1e02f9d2d76a67db6e61299339e" category="inline-link-rx"></block>.</block>
   <block id="52393bb21023d79ef4e0fa374e54b83d" category="list-text">Créez un réseau virtuel Azure.</block>
   <block id="d03589157dd63e1aaf5497955f5058f5" category="list-text">Vérifiez les instances de calcul. Il peut s'agir d'un serveur bare Metal ou de machines virtuelles dans Azure.</block>
-  <block id="b82f3e0352c4295f8db3114c4d861a92" category="inline-link-macro">Exigences du centre de contrôle Astra</block>
-  <block id="8a803e817d15e18f4c26de7531681f8c" category="list-text">Si le type d'instance ne correspond pas déjà aux exigences de ressources minimales Astra pour les nœuds maîtres et workers, modifiez le type d'instance dans Azure afin qu'il réponde aux exigences de l'Astra. Voir <block ref="69ebc365ae107089b5acea91d6e6ce3d" category="inline-link-macro-rx"></block>.</block>
   <block id="5df56ab7fcd23252a7ac4c7a21742e57" category="list-text">Créez au moins un conteneur Azure Blob pour stocker vos sauvegardes.</block>
   <block id="307374e80fc7db1b05d765029543d9c8" category="list-text">Créez un compte de stockage. Vous aurez besoin d'un compte de stockage pour créer un conteneur à utiliser comme compartiment dans Astra Control Center.</block>
   <block id="a9d92f56cc3dae134fc1ee53e8136378" category="list-text">Créez un secret, requis pour l'accès au compartiment.</block>
@@ -2251,7 +2248,6 @@
   <block id="49ffba9fa4ce5bf749cec20def44c0b9" category="paragraph">Pour obtenir des instructions d'installation, reportez-vous à la documentation RedHat sur<block ref="2b5694f45e8e8a8a0bd04ce92001fd2c" category="inline-link-rx"></block> et<block ref="b57239f3f933c36abb901cdf3e168d8f" category="inline-link-rx"></block>.</block>
   <block id="d7e8ec4ac03380f7360b24b84e02bc2c" category="paragraph"><block ref="d7e8ec4ac03380f7360b24b84e02bc2c" category="inline-link-rx"></block></block>
   <block id="038aa329e12ca1821545cf4a1d938aed" category="inline-link">Découvrez la différence entre une application validée et une application standard dans Astra Control</block>
-  <block id="d5a3fd1c4ff9b924b82909f1b645bee8" category="list-text"><block ref="a3e4ce46068122a9dbb346a32a7b154f" category="inline-link-rx"></block>.</block>
   <block id="762ef43b4a11a511c62b8a4849953db5" category="paragraph">Protégez vos applications en effectuant des copies Snapshot et des sauvegardes à l'aide d'une stratégie de protection automatisée ou ad hoc. Vous pouvez utiliser l'interface utilisateur Astra ou<block ref="414551f2d63a329d9ffea01809d18802" category="inline-link-rx"></block> pour protéger les applications.</block>
   <block id="f51de799c9cfab0438048b54a72c2933" category="admonition">Il est impossible d'arrêter une sauvegarde en cours d'exécution. Si vous devez supprimer la sauvegarde, attendez qu'elle soit terminée, puis suivez les instructions de la section <block ref="da28e1f6ad1e5135aab14ac0664600c6" category="inline-xref-macro-rx"></block>. Pour supprimer une sauvegarde défaillante,<block ref="dd68bc92887523be75ee7ba01b4bcb4b" category="inline-link-rx"></block>.</block>
   <block id="4f1044e2106e85477990284013da9865" category="admonition">Il est impossible d'arrêter une sauvegarde en cours d'exécution. Si vous devez supprimer la sauvegarde, attendez qu'elle soit terminée, puis suivez ces instructions. Pour supprimer une sauvegarde défaillante,<block ref="dd68bc92887523be75ee7ba01b4bcb4b" category="inline-link-rx"></block>.</block>
@@ -2274,4 +2270,8 @@
   <block id="dd38f906b37d412de7d1c1dcf4cbf31c" category="paragraph"><block ref="dd38f906b37d412de7d1c1dcf4cbf31c" category="inline-link-macro-rx"></block></block>
   <block id="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-macro"><block ref="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-rx"></block></block>
   <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
+  <block id="56601abf9be7a15a9263f590e5b72309" category="paragraph">Suivez la documentation Azure pour suivre les étapes ci-dessous. Voir<block ref="9ba71785f6bcafa8653bf6ebf2656742" category="inline-link-rx"></block>.</block>
+  <block id="802adae5487ced22b70180d969f7750c" category="list-text">Si le type d'instance ne correspond pas déjà aux exigences de ressources minimales Astra pour les nœuds maîtres et workers, modifiez le type d'instance dans Azure afin qu'il réponde aux exigences de l'Astra.  Voir <block ref="a41c664e3d2520e4c4deb907d0286272" category="inline-link-macro-rx"></block>.</block>
+  <block id="4d7203e3cc3e9782de01bf1c152c7952" category="list-text"><block ref="bb1d5de9fc6b24a8ee91128103dfdee9" category="inline-link-macro-rx"></block>.</block>
+  <block id="f04289013cb8b30466cb952e21a82c10" category="sidebar">Documents relatifs à Astra Control Center 22.04</block>
 </blocks>
